@@ -68,6 +68,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           }
         });
+
+        const billDetails = `
+        <p>Name: ${name}</p>
+        <p>Car Number: ${carNumber}</p>
+        <p>Phone Number: ${phone}</p>
+        <p>Email: ${email}</p>
+        <p>Booking Time: ${bookingTime}</p>
+        <p>Total Cost: $10.00</p>
+      `;
+      document.getElementById('billDetails').innerHTML = billDetails;
+      billContainer.style.display = 'flex';
+    });
+  
+    closeBtn.addEventListener('click', function() {
+      billContainer.style.display = 'none';
     });
 
 });
