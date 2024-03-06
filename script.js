@@ -41,6 +41,33 @@ document.addEventListener('DOMContentLoaded', function() {
             input.disabled = true;
           });
         }
+         
+        const startTime = new Date();
+        setInterval(() => {
+          const endTime = new Date();
+          const duration = Math.floor((endTime - startTime) / 1000);
+          newRow.querySelector('.duration').textContent = duration + ' sec';
+          const cost = (duration * 0.01).toFixed(1); 
+          newRow.querySelector('.cost').textContent = '$' + cost;
+        }, 1000);
+    
+
+        newRow.querySelector('.remove-btn').addEventListener('click', function() {
+          const confirmRemove = confirm('Please pay your parking fee: $' + newRow.querySelector('.cost').textContent + '\n\nClick OK to confirm payment and remove your parking entry.');
+          if (confirmRemove) {
+            parkingBody.removeChild(newRow);
+            availableSpaces++;
+            spacesLeft.textContent = availableSpaces;
+    
+
+            if (availableSpaces > 0) {
+              parkingForm.classList.remove('disabled');
+              parkingForm.querySelectorAll('input, button').forEach(input => {
+                input.disabled = false;
+              });
+            }
+          }
+        });
     });
 
 });
