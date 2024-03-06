@@ -16,6 +16,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const phone = document.getElementById('phone').value;
     const email = document.getElementById('email').value;
     const bookingTime = new Date().toLocaleString();
+    const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td>${name}</td>
+          <td>${carNumber}</td>
+          <td>${phone}</td>
+          <td>${email}</td>
+          <td>${bookingTime}</td>
+          <td class="duration"></td>
+          <td class="cost"></td>
+          <td><button class="remove-btn">Remove</button></td>
+        `;
+        parkingBody.appendChild(newRow);
+        availableSpaces--;
+        spacesLeft.textContent = availableSpaces;
+    
+     
+        parkingForm.reset();
+    
+     
+        if (availableSpaces === 0) {
+          parkingForm.classList.add('disabled');
+          parkingForm.querySelectorAll('input, button').forEach(input => {
+            input.disabled = true;
+          });
+        }
     });
 
 });
