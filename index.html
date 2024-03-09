@@ -47,48 +47,54 @@
                 </ul>
             </div>
             <div class="mainfirstdiv">
-            <div class="videologo">
-                <img src="./img/tech-CAR-unscreen.gif" width="357vw" style="border-radius: 200%;">
-            </div>
-            <div class="maincontainer">
-                <div class="maincontainerheading">
-                    <h1>Park Navi:<br>Your Parking <span data-text="Solution!" class="textmove"> Solution!</span></h1>
+                <div class="videologo">
+                    <img src="./img/tech-CAR-unscreen.gif" width="357vw" style="border-radius: 200%;">
                 </div>
-                <div class="maincontainertext">
-                    <p>"Streamline Parking Management: Effortlessly monitor, manage, and optimize <br> parking spaces
-                        with our user-friendly platform. Experience convenience <br> like never before."</p>
-                </div>
-            </div>
-        </div>
-        <div class="animatetext">
-            <span class=".animatemove"><a href="#parkingmaincustom" class="removeline">Park & Mannage
-                    &#128663;</a></span>
-        </div>
-        <div class="detail" id="detail">
-            <div class="left">
-                <div class="leftheading">
-                    <h1> "System Requirements: Parking Lot Management"</h1>
-                </div>
-                <div class="leftpara">
-                    <ul>
-                        <li class="abouttxtm"><span class="abouttxtag">Complete Information Submission:</span>Users must
-                            provide accurate personal details for booking, including full name, contact information, and
-                            vehicle identification.</li>
-                        <li class="abouttxtm"> <span class="abouttxtag">Compliance with Regulations:</span>Users are
-                            obligated to adhere to parking rules and regulations, ensuring that vehicles are parked in
-                            designated areas and comply with all legal requirements.</li>
-                        <li class="abouttxtm"><span class="abouttxtag">Full Payment Compliance:</span> Users are
-                            responsible for making timely and complete payments for parking services, as failure to pay
-                            parking fees may result in penalties or restrictions on future bookings.</li>
-                    </ul>
+                <div class="maincontainer">
+                    <div class="maincontainerheading">
+                        <h1>Park Navi:<br>Your Parking <span data-text="Solution!" class="textmove"> Solution!</span>
+                        </h1>
+                    </div>
+                    <div class="maincontainertext">
+                        <p>"Streamline Parking Management: Effortlessly monitor, manage, and optimize <br> parking
+                            spaces
+                            with our user-friendly platform. Experience convenience <br> like never before."</p>
+                    </div>
                 </div>
             </div>
-            <div class="right">
-                <div class="rightimg">
-                    <img src="./img/tech-CAR-1--unscreen.gif" alt="">
+            <div class="animatetext">
+                <span class=".animatemove"><a href="#parkingmaincustom" class="removeline">Park & Mannage
+                        &#128663;</a></span>
+            </div>
+            <div class="detail" id="detail">
+                <div class="left">
+                    <div class="leftheading">
+                        <h1> "System Requirements: Parking Lot Management"</h1>
+                    </div>
+                    <div class="leftpara">
+                        <ul>
+                            <li class="abouttxtm"><span class="abouttxtag">Complete Information Submission:</span>Users
+                                must
+                                provide accurate personal details for booking, including full name, contact information,
+                                and
+                                vehicle identification.</li>
+                            <li class="abouttxtm"> <span class="abouttxtag">Compliance with Regulations:</span>Users are
+                                obligated to adhere to parking rules and regulations, ensuring that vehicles are parked
+                                in
+                                designated areas and comply with all legal requirements.</li>
+                            <li class="abouttxtm"><span class="abouttxtag">Full Payment Compliance:</span> Users are
+                                responsible for making timely and complete payments for parking services, as failure to
+                                pay
+                                parking fees may result in penalties or restrictions on future bookings.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="rightimg">
+                        <img src="./img/tech-CAR-1--unscreen.gif" alt="">
+                    </div>
                 </div>
             </div>
-        </div>
         </nav>
         <div class="mainfirstdiv">
             <div class="videologo">
@@ -168,6 +174,52 @@
                     <input type="text" id="searchInput" onkeyup="searchTable()"
                         placeholder="Search by name or car number...">
                 </div>
+
+                <table id="parkingTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Car Number</th>
+                            <th>Phone Number</th>
+                            <th>Email</th>
+                            <th>Booking Time</th>
+                            <th>Duration</th>
+                            <th>Cost</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="parkingBody">
+                    </tbody>
+                </table>
+                <button type="button" onclick="downloadFormData()" class="buttonpark">Download Form Data</button>
+            </div>
+        </div>
+        <footer>
+            <div class="mainfooter">
+                <div class="mainfooterbox">
+                    <div class="footerheading">
+                        <h1>Park Navi &#128663;</h1>
+                    </div>
+                    <div class="footerpara">
+                        <p>
+                            "Explore our comprehensive parking solutions designed to streamline your parking operations.
+                            <br> From real-time monitoring to automated payments, we're here to simplify <br> your
+                            parking experience."
+                        </p>
+                    </div>
+                    <div class="footerlinks">
+                        <a href="" class="footera"><img src="./img/icons/icons8-instagram-26.png" alt=""></a>
+                        <a href="" class="footera"><img src="./img/icons/icons8-gmail-24.png" alt=""></a>
+                        <a href="" class="footera"><img src="./img/icons/icons8-linkedin-26 (1).png" alt=""></a>
+                        <a href="" class="footera"><img src="./img/icons/icons8-phone-30 (1).png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div id="notification" class="notification alert alert-primary" role="alert">
+                <span id="notification-message" class="notification-message">Custom notification message</span>
+            </div>
+
+        </footer>
 </body>
 
 </html>
