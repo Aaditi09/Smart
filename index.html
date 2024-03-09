@@ -5,153 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <link rel="shortcut icon" href="/img/logo/_9124c6bb-8262-4dbb-a29e-297bc266882c-removebg-preview.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/logo/_9124c6bb-8262-4dbb-a29e-297bc266882c-removebg-preview.png"
+        type="image/x-icon">
     <title>ParkNavi: Simplifying Parking Management</title>
-    <script src="/script.js"></script>
+
 </head>
 
-<header>
-    <nav>
-        <div class="leftnavdiv">
-            <ul>
-                <div class="logo">
-                    <img src="./img/logo/_9124c6bb-8262-4dbb-a29e-297bc266882c-removebg-preview.png" width="100vw"
-                        alt="">
-                </div>
-                <li class="leftitem">Home</li>
-                <li class="leftitem">About Us</li>
-                <li class="leftitem">Contact Us</li>
+<body>
+    <header>
+        <nav>
+            <div class="leftnavdiv">
+                <ul>
+                    <div class="logo">
+                        <img src="./img/logo/_9124c6bb-8262-4dbb-a29e-297bc266882c-removebg-preview.png" width="100vw"
+                            alt="">
+                    </div>
+                    <a href="index.html">
+                        <li class="leftitem">Home</li>
+                    </a>
+                    <a href="about.html">
+                        <li class="leftitem">About Us</li>
+                    </a>
+                    <a href="contactus.html">
+                        <li class="leftitem">Contact Us</li>
+                    </a>
 
-            </ul>
-        </div>
-        <div class="rightnavdiv">
-            <ul>
-                <li class="rightitem"><a href="#parkingmaincustom"
-                        style="text-decoration: none; color: #5B8FB9;">Explore</a></li>
-                <button class="navbtn">Sign Up</button>
-                <button class="navbtn">Login In</button>
-                <li class="rightitem"><a href="#parkingmain" style="text-decoration: none; color: #5B8FB9;">Records</a>
-                </li>
-                <select name="language " class="languageselect">
-                    <option value="English">English</option>
-                    <option value="Hindi">Hindi</option>
-                </select>
-            </ul>
-        </div>
-    </nav>
-</header>
-
-<div class="mainfirstdiv">
-    <div class="videologo">
-        <img src="./img/tech-CAR-unscreen.gif" width="357vw" style="border-radius: 200%;">
-    </div>
-    <div class="maincontainer">
-        <div class="maincontainerheading">
-            <h1>Park Navi:<br>Your Parking <span data-text="Solution!" class="textmove"> Solution!</span></h1>
-        </div>
-        <div class="maincontainertext">
-            <p>"Streamline Parking Management: Effortlessly monitor, manage, and optimize <br> parking spaces with our
-                user-friendly platform. Experience convenience <br> like never before."</p>
-        </div>
-    </div>
-</div>
-<div class="animatetext">
-    <span class=".animatemove"><a href="#parkingmaincustom" class="removeline">Park & Mannage &#128663;</a></span>
-</div>
-<div class="detail" id="detail">
-    <div class="left">
-        <div class="leftheading">
-            <h1> "System Requirements: Parking Lot Management"</h1>
-        </div>
-        <div class="leftpara">
-            <ul>
-                <li class="abouttxtm"><span class="abouttxtag">Complete Information Submission:</span>Users must provide
-                    accurate personal details for booking, including full name, contact information, and vehicle
-                    identification.</li>
-                <li class="abouttxtm"> <span class="abouttxtag">Compliance with Regulations:</span>Users are obligated
-                    to adhere to parking rules and regulations, ensuring that vehicles are parked in designated areas
-                    and comply with all legal requirements.</li>
-                <li class="abouttxtm"><span class="abouttxtag">Full Payment Compliance:</span> Users are responsible for
-                    making timely and complete payments for parking services, as failure to pay parking fees may result
-                    in penalties or restrictions on future bookings.</li>
-            </ul>
-        </div>
-    </div>
-    <div class="right">
-        <div class="rightimg">
-            <img src="./img/tech-CAR-1--unscreen.gif" alt="">
-        </div>
-    </div>
-</div>
-
-
-
-<div class="container" id="parkingmaincustom">
-    <h1 class="hpark">Smart Car Parking</h1>
-    <div class="form">
-        <h2 class="h2park">Enter Your Details</h2>
-        <form id="parkingForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Enter Your Name" required>
-            <label for="carNumber">Car Number:</label>
-            <input type="text" id="carNumber" placeholder="Enter  Car Number" required>
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" placeholder="Enter Phone no." required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="Enter your email id" required>
-            <button type="submit" class="buttonpark">Book Parking</button>
-        </form>
-    </div>
-    <div class="parking-details" id="parkingmain">
-        <h2 class="hparking-detials">Parking Details</h2>
-        <p class="mpark">Total Available Spaces: <span id="totalSpaces" class="totalpara">50</span></p>
-        <p class="mpark">Spaces Left: <span id="spacesLeft" class="totalpara">50</span></p>
-        <table id="parkingTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Car Number</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                    <th>Booking Time</th>
-                    <th>Duration</th>
-                    <th>Cost</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="parkingBody">
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="bill-container" id="billContainer">
-    <div class="bill-box">
-      <h2>Thank You!</h2>
-      <div class="bill-details" id="billDetails">
-        
-      </div>
-      <button class="close-btn">Close</button>
-    </div>
-  </div>
-  <footer>
-    <div class="mainfooter">
-        <div class="mainfooterbox">
-            <div class="footerheading">
-                <h1>Park Navi 	&#128663;</h1>
+                </ul>
             </div>
-            <div class="footerpara">
-                <p>
-                    "Explore our comprehensive parking solutions designed to streamline your parking operations. <br> From real-time monitoring to automated payments, we're here to simplify <br> your parking experience."</p>
+            <div class="rightnavdiv">
+                <ul>
+                    <li class="rightitem"><a href="#parkingmaincustom"
+                            style="text-decoration: none; color: #5B8FB9;">Explore</a></li>
+                    <!-- <button class="navbtn">Sign Up</button>
+                    <button class="navbtn">Login In</button> -->
+                    <li class="rightitem"><a href="#parkingmain"
+                            style="text-decoration: none; color: #5B8FB9;">Records</a></li>
+                    <select name="language" class="languageselect" style="background-color: black;">
+                        <option value="English">English</option>
+                        <option value="Hindi">Hindi</option>
+                    </select>
+                </ul>
             </div>
-            <div class="footerlinks">
-                <a href="" class="footera"><img src="./img/icons/icons8-instagram-26.png" alt=""></a>
-                <a href="" class="footera"><img src="./img/icons/icons8-gmail-24.png" alt=""></a>
-                <a href="" class="footera"><img src="./img/icons/icons8-linkedin-26 (1).png" alt=""></a>
-                <a href="" class="footera"><img src="./img/icons/icons8-phone-30 (1).png" alt=""></a>
-            </div>
-        </div>
-    </div>
-  </footer>
+        </nav>
+    </header>
 </body>
 
 </html>
