@@ -133,3 +133,96 @@ data.forEach(function (formData, index) {
 });
 
 }
+
+function removeFormData(index) {
+    const confirmRemove = confirm('Please pay your parking fee: $' + document.getElementById('parkingTable').rows[index + 1].querySelectorAll('td')[6].textContent + '\n\nClick OK to confirm payment and remove your parking entry.');
+    if (confirmRemove) {
+        var existingData = JSON.parse(localStorage.getItem('formData')) || [];
+        existingData.splice(index, 1);
+        localStorage.setItem('formData', JSON.stringify(existingData));
+        populateTable(existingData);
+    }
+    location.reload();
+}
+
+function editFormData(index) {
+    var existingData = JSON.parse(localStorage.getItem('formData')) || [];
+    var formData = existingData[index];
+
+    document.getElementById('name').value = formData.name;
+    document.getElementById('carNumber').value = formData.carNumber;
+    document.getElementById('phone').value = formData.phone;
+    document.getElementById('email').value = formData.email;
+
+    document.getElementById('editIndex').value = index;
+}
+
+function saveEditedFormData() {
+    var index = document.getElementById('editIndex').value;
+
+    if (index !== null && index !== undefined) {
+        var existingData = JSON.parse(localStorage.getItem('formData')) || [];
+        var formData = {
+            name: document.getElementById('name').value,
+            carNumber: document.getElementById('carNumber').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            startTime: existingData[index].startTime,
+            bookingTime: existingData[index].bookingTime
+        };
+
+        var bookingTime = new Date(existingData[index].bookingTime);
+        var currentTime = new Date();
+        var durationHours = Math.ceil((currentTime - bookingTime) / (1000 * 60 * 60));
+        formData.duration = durationHours + ' hour(s)';
+
+        var costPerHour = 10;
+        var totalCost = durationHours * costPerHour;
+        formData.cost = '$' + totalCost.toFixed(2);
+
+        existingData[index] = formData;
+
+        localStorage.setItem('formData', JSON.stringify(existingData));
+
+        populateTable(existingData);
+        showNotification("Data Editted", "primary");
+    }
+
+    document.getElementById('editIndex').value = '';
+}
+
+function downloadFormData() {
+    var existingData = JSON.parse(localStorage.getItem('formData')) || [];
+
+    var jsonData = JSON.stringify(existingData, null, 2);
+
+    var blob = new Blob([jsonData], { type: 'application/json' });
+
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'formData.json';
+
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+}
+
+function loadFormData() {
+    var existingData = JSON.parse(localStorage.getItem('formData')) || [];
+
+    populateTable(existingData);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const parkingForm = document.getElementById('parkingForm');
+    const parkingBody = document.getElementById('parkingBody');
+    const spacesLeft = document.getElementById('spacesLeft');
+    let availableSpaces = 50;
+
+    function updateAvailableSpaces() {
+        const existingData = JSON.parse(localStorage.getItem('formData')) || [];
+        const occupiedSpaces = existingData.length;
+        availableSpaces = 50 - occupiedSpaces;
+        spacesLeft.textContent = availableSpaces;
+    }
