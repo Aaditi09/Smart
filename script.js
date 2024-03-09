@@ -1,88 +1,71 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const parkingForm = document.getElementById('parkingForm');
-    const parkingTable = document.getElementById('parkingTable');
-    const parkingBody = document.getElementById('parkingBody');
-    const totalSpaces = document.getElementById('totalSpaces');
-    const spacesLeft = document.getElementById('spacesLeft');
-    const billContainer = document.getElementById('billContainer');
-    const closeBtn = document.querySelector('.close-btn');
-    
-    let availableSpaces = 50;
-    
-    parkingForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const name = document.getElementById('name').value;
-    const carNumber = document.getElementById('carNumber').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const bookingTime = new Date().toLocaleString();
-    const newRow = document.createElement('tr');
-        newRow.innerHTML = `
-          <td>${name}</td>
-          <td>${carNumber}</td>
-          <td>${phone}</td>
-          <td>${email}</td>
-          <td>${bookingTime}</td>
-          <td class="duration"></td>
-          <td class="cost"></td>
-          <td><button class="remove-btn">Remove</button></td>
-        `;
-        parkingBody.appendChild(newRow);
-        availableSpaces--;
-        spacesLeft.textContent = availableSpaces;
-    
-     
-        parkingForm.reset();
-    
-     
-        if (availableSpaces === 0) {
-          parkingForm.classList.add('disabled');
-          parkingForm.querySelectorAll('input, button').forEach(input => {
-            input.disabled = true;
-          });
-        }
-         
-        const startTime = new Date();
-        setInterval(() => {
-          const endTime = new Date();
-          const duration = Math.floor((endTime - startTime) / 1000);
-          newRow.querySelector('.duration').textContent = duration + ' sec';
-          const cost = (duration * 0.01).toFixed(1); 
-          newRow.querySelector('.cost').textContent = '$' + cost;
-        }, 1000);
-    
+function showNotification(message, type = 'primary') {
+  var notification = document.getElementById('notification');
+  var notificationMessage = document.getElementById('notification-message');
+  if (notification && notificationMessage) {
+      notificationMessage.innerText = message;
+      notification.classList.remove('alert-primary', 'alert-success', 'alert-danger', 'alert-warning');
+      notification.classList.add('alert-' + type);
+      notification.style.display = 'block';
+      setTimeout(function () {
+          notification.classList.add('show');
+      }, 100);
+      setTimeout(function () {
+          notification.style.display = 'none';
+      }, 5000);
+  }
+}
 
-        newRow.querySelector('.remove-btn').addEventListener('click', function() {
-          const confirmRemove = confirm('Please pay your parking fee: $' + newRow.querySelector('.cost').textContent + '\n\nClick OK to confirm payment and remove your parking entry.');
-          if (confirmRemove) {
-            parkingBody.removeChild(newRow);
-            availableSpaces++;
-            spacesLeft.textContent = availableSpaces;
-    
 
-            if (availableSpaces > 0) {
-              parkingForm.classList.remove('disabled');
-              parkingForm.querySelectorAll('input, button').forEach(input => {
-                input.disabled = false;
-              });
-            }
+function searchTable() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("parkingTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td");
+      for (var j = 0; j < td.length; j++) {
+          if (td[j]) {
+              txtValue = td[j].textContent || td[j].innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+                  break;
+              } else {
+                  tr[i].style.display = "none";
+              }
           }
-        });
+      }
+  }
+}
 
-        const billDetails = `
-        <p>Name: ${name}</p>
-        <p>Car Number: ${carNumber}</p>
-        <p>Phone Number: ${phone}</p>
-        <p>Email: ${email}</p>
-        <p>Booking Time: ${bookingTime}</p>
-        <p>Total Cost: $10.00</p>
-      `;
-      document.getElementById('billDetails').innerHTML = billDetails;
-      billContainer.style.display = 'flex';
-    });
-  
-    closeBtn.addEventListener('click', function() {
-      billContainer.style.display = 'none';
-    });
+window.onload = function () {
+  loadFormData();
 
-});
+  setInterval(checkDurationAndNotify, 20000);
+};
+function checkDurationAndNotify() {
+  var existingData = JSON.parse(localStorage.getItem('formData')) || [];
+  var currentTime = new Date();
+
+  existingData.forEach(function (formData) {
+      var startTime = new Date(formData.startTime);
+      var durationHours = Math.ceil((currentTime - startTime) / (1000 * 60 * 60));
+
+      if (durationHours > 1) {
+          // Vehicle has been parked for more than 5 hours, send notification
+          showNotification(Vehicle Plate :- ${formData.carNumber} has been parked for about ${durationHours} hours.);
+      }
+  });
+}
+
+function saveFormData() {
+  const name = document.getElementById('name').value;
+  const carNumber = document.getElementById('carNumber').value;
+  const phone = document.getElementById('phone').value;
+  const email = document.getElementById('email').value;
+
+  if (!name || !carNumber || !phone || !email) {
+      showNotification('Please fill in all fields.', 'warning');
+      return false; // Prevent form submission
+  }
