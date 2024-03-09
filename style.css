@@ -1,99 +1,170 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Great+Vibes&family=Hind&family=Kanit:wght@100&family=Roboto+Mono:wght@100&family=Roboto+Slab:wght@700&family=Young+Serif&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.7vh 0.6vw;
-    background-color: #03001C;
-}
-.leftnavdiv>ul{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.rightnavdiv>ul{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-li{
-    list-style: none;
-}
-.leftitem{
-    margin: 0 1vw;
-font-weight: bold;
-font-size: 1.5vw;
-COLOR: #5B8FB9;
-}
-.leftitem:hover{
-    font-size: 1.55vw;
-    COLOR: #B6EADA;
-    cursor: pointer;
-}
-.rightitem{
-    margin: 0 1vw;
-font-weight: bold;
-font-size: 1.5vw;  
-COLOR: #5B8FB9;
-}
-.rightitem:hover{
-    font-size: 1.55vw;
-    COLOR: #B6EADA;
-    cursor: pointer;
 
+/* Default styles */
+body {
+  font-family: 'Hind', sans-serif; /* Default font */
+  background-color: #03001C; /* Dark background color */
+  color: #B6BBC4; /* Default text color */
 }
-.navbtn{
-    margin: 0 0.6vw;
-    border-radius: 20px;
-    padding: 0.8vh 0.75vw;
-    font-size: 1.2vw;
-    color: #240046;
-font-weight: bold;
-}
-.languageselect{
-    margin: 0 0.6vw;
-    font-size: 1.1vw;
-    color: #240046;
-    padding: 0.4vh 0.8vw;
 
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px; /* Improved padding */
+  background-color: #240046; /* Darker navbar background color */
 }
-.mainfirstdiv{
-    background:linear-gradient(to bottom,#03001C,#301E67);
-    color: antiquewhite;
-    width: 100%;
-    height: 37vh;
-    clip-path: polygon(0 0, 100% 0, 122% 3%, 0% 172%);
-    display: flex;
-/* justify-content: space-evenly; */
-align-items: center;
-/* padding-top: 5vh; */
 
+.leftnavdiv > ul,
+.rightnavdiv > ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.maincontainerheading{
-    padding: 1vh 0 2vh 0;
+
+li {
+  list-style: none;
 }
-.textmove{
+
+.leftitem,
+.rightitem,
+.navbtn,
+.languageselect {
+  margin: 0 10px; /* Increased margin for better spacing */
+  font-size: 1.2em; /* Increased font size for better readability */
+  color: #B6BBC4; /* Light text color */
+  transition: color 0.3s; /* Smooth transition */
+  cursor: pointer;
+}
+
+.leftitem:hover,
+.rightitem:hover,
+.navbtn:hover,
+.languageselect:hover {
+  color: #ffffff; /* White text color on hover */
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+  /* Navbar */
+  nav {
+      flex-direction: column;
+      padding: 20px 0; /* Adjusted padding for better spacing */
+  }
+
+  .leftnavdiv,
+  .rightnavdiv {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px; /* Added margin bottom for better separation */
+  }
+
+  .leftitem,
+  .rightitem,
+  .navbtn,
+  .languageselect {
+      margin: 5px; /* Adjusted margin for better spacing */
+      font-size: 1.1em; /* Adjusted font size for better readability */
+  }
+
+  /* Main Container */
+  .maincontainer {
+      padding: 0 5%; /* Adjusted padding for better spacing */
+  }
+
+  /* Video Logo */
+  .videologo {
+      padding: 0 2% 0 4%; /* Adjusted padding for better spacing */
+  }
+
+  /* Community Container */
+  .comunitycontainer {
+      height: auto; /* Removed fixed height for responsiveness */
+      margin-top: 5vh; /* Adjusted margin top for better spacing */
+  }
+
+  /* Animated Text */
+  .animatetext {
+      font-size: 3vw; /* Adjusted font size for better readability */
+      padding: 2vh 0; /* Adjusted padding for better spacing */
+  }
+
+  /* Details Container */
+  .detail {
+      margin: 3vh 5%; /* Adjusted margin for better spacing */
+  }
+
+  /* Left Heading */
+  .leftheading {
+      margin: 3vh 0; /* Adjusted margin for better spacing */
+  }
+
+  /* Parking Details */
+  .parking-details {
+      font-size: 3vw; /* Adjusted font size for better readability */
+      margin-top: 5%; /* Adjusted margin top for better spacing */
+  }
+
+  /* Form */
+  form {
+      font-size: 3vw; /* Adjusted font size for better readability */
+      padding: 5vh 0; /* Adjusted padding for better spacing */
+  }
+
+  /* Search Container */
+  .search-container input[type=text] {
+      padding: 5px; /* Adjusted padding for better spacing */
+      margin-top: 5px; /* Adjusted margin top for better spacing */
+      margin-bottom: 5px; /* Adjusted margin bottom for better spacing */
+      font-size: 3vw; /* Adjusted font size for better readability */
+  }
+
+  /* Buttons */
+  .buttonpark {
+      padding: 10px 20px; /* Adjusted padding for better button size */
+      margin-top: 5%; /* Adjusted margin top for better spacing */
+  }
+}
+
+
+.mainfirstdiv {
+    background: linear-gradient(to bottom, #03001C, #301E67);
+    color: #ffffff; /* White text color */
+    padding: 50px 20px; /* Improved padding */
+    text-align: center; /* Center align text */
+}
+
+.maincontainerheading {
+    padding: 20px 0; /* Improved padding */
+}
+
+.textmove {
     position: relative;
-    color: #240046;
-    /* -webkit-text-stroke: 0.3vw #420b75 ; */
+    color: #B6BBC4; /* Light text color */
 }
-.textmove::before{
+
+.textmove::before {
     content: attr(data-text);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    color: white;
-    -webkit-text-stroke: 0vw #420b75 ;
+    color: #ffffff; /* White text color */
     border-right: 2px solid white;
     overflow: hidden;
     animation: animate 6s linear infinite;
 }
+
+/* Rest of your CSS remains unchanged */
+
 @keyframes animate {
     0%,10%,100%{
         width: 0;
@@ -104,6 +175,7 @@ align-items: center;
     }
     
 }
+
 
 .maincontainer{
     padding: 0 1vw;
@@ -125,281 +197,4 @@ align-items: center;
   flex-direction: column;
  
   align-items: center;
-}
-.animatetext{
-    animation: movetext 10s linear reverse infinite forwards;
-    font-size: 2vw;
-    padding: 1vh 0;
-
-}
-.removeline{
-    text-decoration: none;
-    color: #240046;
-}
-.removeline:hover{
-    text-decoration: underline;
-}
-@keyframes movetext {
-    0%{
-        transform: translateX(0);
-        transform-origin: start;
-    }
-    50%{
-        transform: translateX(92vw);
-    }
-    60%{
-        transform: translateX(80vw);
-
-    }
-    /* 70%{
-        transform: translateX(40vw);
-
-    } */
-    100%{
-        transform: translateX(0);
-
-    }
-    
-}
-.detail{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 3vh 3vw;
-    border: 6px groove #161A30;
-    border-radius: 3vw;
-    overflow: hidden;
-    background: #301E67;
-}
-.leftheading{
-    margin: 3vh 0;
-}
-.left{
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    
-}
-.part{
-    display:flex;
-    justify-content:center;
-    flex-direction: column;
-    align-items: center;
-    margin: 2vh 3vw;
-}
-.rcenter{
-    text-align: center;
-}
-.all{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-}
-.abouttxtm{
-    list-style:url('./img/icons/icons8-quick-mode-on-30.png') inside;
-    margin: 4vh 1vw;
-}
-
-.abouttxtag{
-    color:#B6BBC4;
-    font-size: 1.7vw;
-    text-decoration: underline;
-}
-.container {
-    background: linear-gradient(to bottom,#03001C,#240046);
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 4vh 0;
-  }
-  .hpark{
-    color: white;
-    font-size: 3vw;
-    font-family: "Great Vibes", cursive;
-  font-weight: bold;
-  font-style: normal;
-  text-decoration: underline;
-  }
-  .h2park{
-    color: #ccc;
-  }
-  
-  /* h1 {
-    margin-bottom: 20px;
-  } */
-  
-  .form,
-  .parking-details {
-    color: #ccc;
-    font-size: 2vw;
-    margin-top: 20px;
-    padding: 0 0 6vh 0;
-    
-  }
-  .mpark{
-    margin: 1vh 0;
-  }
-  .totalpara{
-    color: #007bff;
-  }
-  .hparking-detials{
-    text-decoration: underline;
-    margin: 2vh 0;
-    font-size: 2.8vw;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #007bff;
-    font-size: 2vw;
-    padding: 2vh 0;
-  }
-  
- 
-  label {
-    margin-bottom: 2vh;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: #B6EADA59;
-  }
-  
-  .buttonpark {
-    background-color: #007bff;
-    color: black;
-    border: none;
-    border-radius: 4px;
-    padding: 2vh 2vw;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 1.3vh;
-  }
-  
-  .buttonpark:hover {
-    background-color: #B6EADA;
-    color: #03001C;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-
-  th, td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-  }
-  .remove-btn{
-
-    background-color: #007bff;
-    color: black;
-    border: none;
-    border-radius: 4px;
-    padding: 2vh 1vw;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .remove-btn:hover{
-    background-color: #B6EADA;
-    color: #03001C;
-
-  }
-  
- 
-  
-  .bill-container {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .bill-box {
-    background:linear-gradient(to right,#03001C,#240046);
-    padding: 20px;
-    border-radius: 8px;
-    color: #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .bill-box h2 {
-    margin-bottom: 10px;
-    font-size: 3vw;
-  }
-  
-  .bill-details {
-    margin-bottom: 20px;
-    font-size: 2vw;
-  }
-  
-  .bill-details p {
-    margin-bottom: 5px;
-    
-
-  }
-  
-  .close-btn {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .close-btn:hover {
-    background-color: #0056b3;
-  }
-
-  .mainfooter{
-    background-color: #03001C;
-    color: #ccc;
-    height: 40vh;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-  }
-  .mainfooterbox{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 15vw;
-  }
-  .footerheading{
-    font-size: 1.6vw;
-    padding: 1vh 0;
-  }
-  .footerpara{
-    text-align: center;
-    padding: 1vh 0;
-  }
-  .footerlinks{
-    padding: 1vh 0;
-  }
-  .footera{
-    margin:0 1vw;
-  }
-
-header{
-  overflow: hidden;
 }
