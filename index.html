@@ -133,7 +133,41 @@
                 </div>
             </div>
         </div>
-    
+        <div class="container" id="parkingmaincustom">
+            <h1 class="hpark">Smart Car Parking</h1>
+            <div class="form">
+                <h2 class="h2park">Enter Your Details</h2>
+                <form id="parkingForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="Enter Your Name" required>
+                    <div class="input-container" id="carNumberContainer">
+                        <label for="carNumber">Car Number:</label>
+                        <input type="text" id="carNumber" placeholder="Enter Car Number" required>
+                    </div>
+                    <div class="input-container" id="phoneContainer">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" placeholder="Enter Phone no." required>
+                    </div>
+                    <div class="input-container" id="emailContainer">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" placeholder="Enter your email id" required>
+                    </div>
+                    <button type="button" onclick="saveFormData()" class="buttonpark">Book Parking</button>
+                    <input type="hidden" id="editIndex">
+
+                    <button type="button" onclick="saveEditedFormData()" class="buttonpark">Save Edited Data</button>
+
+                </form>
+            </div>
+            <div class="parking-details" id="parkingmain">
+                <h2 class="hparking-detials">Parking Details</h2>
+                <p class="mpark">Total Available Spaces: <span id="totalSpaces" class="totalpara">50</span></p>
+                <p class="mpark">Spaces Left: <span id="spacesLeft" class="totalpara">50</span></p>
+                <h4><u>Search</u></h4>
+                <div class="search-container">
+                    <input type="text" id="searchInput" onkeyup="searchTable()"
+                        placeholder="Search by name or car number...">
+                </div>
 </body>
 
 </html>
