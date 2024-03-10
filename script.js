@@ -226,3 +226,119 @@ document.addEventListener('DOMContentLoaded', function () {
         availableSpaces = 50 - occupiedSpaces;
         spacesLeft.textContent = availableSpaces;
     }
+
+    updateAvailableSpaces();
+
+        parkingForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const carNumber = document.getElementById('carNumber').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const bookingTime = new Date().toLocaleString();
+
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+            <td>${name}</td>
+            <td>${carNumber}</td>
+            <td>${phone}</td>
+            <td>${email}</td>
+            <td>${bookingTime}</td>
+            <td class="duration"></td>
+            <td class="cost"></td>
+        `;
+            parkingBody.appendChild(newRow);
+            availableSpaces--;
+            spacesLeft.textContent = availableSpaces;
+
+            parkingForm.reset();
+
+            if (availableSpaces === 0) {
+                parkingForm.classList.add('disabled');
+                parkingForm.querySelectorAll('input, button').forEach(input => {
+                    input.disabled = true;
+                });
+            }
+
+            loadFormData();
+
+        });
+        const startTime = new Date();
+        const intervalId = setInterval(() => {
+            const endTime = new Date();
+            const duration = Math.floor((endTime - startTime) / 1000); // Calculate duration in seconds
+            newRow.querySelector('.duration').textContent = duration + ' sec'; // Display duration in seconds
+            const cost = (duration * 0.01).toFixed(1); // Calculate cost based on seconds
+            newRow.querySelector('.cost').textContent = '$' + cost;
+        });
+
+        function removeFormData(index) {
+            const confirmRemove = confirm('Please pay your parking fee: $' + document.getElementById('parkingTable').rows[index + 1].querySelectorAll('td')[6].textContent + '\n\nClick OK to confirm payment and remove your parking entry.');
+            if (confirmRemove) {
+                const existingData = JSON.parse(localStorage.getItem('formData')) || [];
+                existingData.splice(index, 1);
+                localStorage.setItem('formData', JSON.stringify(existingData));
+                populateTable(existingData);
+                availableSpaces++;
+                spacesLeft.textContent = availableSpaces;
+            }
+        }
+
+    });
+    // Function to check if the given time and current time exceed 10 hours
+
+
+    document.getElementById('name').addEventListener('input', function (event) {
+        if (this.value.trim() !== '') {
+            document.getElementById('carNumberContainer').classList.add('active');
+        } else {
+            document.getElementById('carNumberContainer').classList.remove('active');
+        }
+    });
+
+    document.getElementById('name').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            if (this.value.trim() === '') {
+                document.getElementById('carNumberContainer').classList.add('active');
+                document.getElementById('carNumber').focus();
+            }
+        }
+    });
+
+    document.getElementById('carNumber').addEventListener('input', function (event) {
+        if (this.value.trim() !== '') {
+            document.getElementById('phoneContainer').classList.add('active');
+        } else {
+            document.getElementById('phoneContainer').classList.remove('active');
+        }
+    });
+
+    document.getElementById('carNumber').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            if (this.value.trim() === '') {
+                document.getElementById('phoneContainer').classList.add('active');
+                document.getElementById('phone').focus();
+            }
+        }
+    });
+
+    document.getElementById('phone').addEventListener('input', function (event) {
+        if (this.value.trim() !== '') {
+            document.getElementById('emailContainer').classList.add('active');
+        } else {
+            document.getElementById('emailContainer').classList.remove('active');
+        }
+    });
+
+    document.getElementById('phone').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            if (this.value.trim() === '') {
+                document.getElementById('emailContainer').classList.add('active');
+                document.getElementById('email').focus();
+            }
+        }
+    });
