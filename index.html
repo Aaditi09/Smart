@@ -8,7 +8,6 @@
     <link rel="shortcut icon" href="/img/logo/_9124c6bb-8262-4dbb-a29e-297bc266882c-removebg-preview.png"
         type="image/x-icon">
     <title>ParkNavi: Simplifying Parking Management</title>
-
 </head>
 
 <body>
@@ -36,8 +35,6 @@
                 <ul>
                     <li class="rightitem"><a href="#parkingmaincustom"
                             style="text-decoration: none; color: #5B8FB9;">Explore</a></li>
-                    <!-- <button class="navbtn">Sign Up</button>
-                    <button class="navbtn">Login In</button> -->
                     <li class="rightitem"><a href="#parkingmain"
                             style="text-decoration: none; color: #5B8FB9;">Records</a></li>
                     <select name="language" class="languageselect" style="background-color: black;">
@@ -46,56 +43,8 @@
                     </select>
                 </ul>
             </div>
-            <div class="mainfirstdiv">
-                <div class="videologo">
-                    <img src="./img/tech-CAR-unscreen.gif" width="357vw" style="border-radius: 200%;">
-                </div>
-                <div class="maincontainer">
-                    <div class="maincontainerheading">
-                        <h1>Park Navi:<br>Your Parking <span data-text="Solution!" class="textmove"> Solution!</span>
-                        </h1>
-                    </div>
-                    <div class="maincontainertext">
-                        <p>"Streamline Parking Management: Effortlessly monitor, manage, and optimize <br> parking
-                            spaces
-                            with our user-friendly platform. Experience convenience <br> like never before."</p>
-                    </div>
-                </div>
-            </div>
-            <div class="animatetext">
-                <span class=".animatemove"><a href="#parkingmaincustom" class="removeline">Park & Mannage
-                        &#128663;</a></span>
-            </div>
-            <div class="detail" id="detail">
-                <div class="left">
-                    <div class="leftheading">
-                        <h1> "System Requirements: Parking Lot Management"</h1>
-                    </div>
-                    <div class="leftpara">
-                        <ul>
-                            <li class="abouttxtm"><span class="abouttxtag">Complete Information Submission:</span>Users
-                                must
-                                provide accurate personal details for booking, including full name, contact information,
-                                and
-                                vehicle identification.</li>
-                            <li class="abouttxtm"> <span class="abouttxtag">Compliance with Regulations:</span>Users are
-                                obligated to adhere to parking rules and regulations, ensuring that vehicles are parked
-                                in
-                                designated areas and comply with all legal requirements.</li>
-                            <li class="abouttxtm"><span class="abouttxtag">Full Payment Compliance:</span> Users are
-                                responsible for making timely and complete payments for parking services, as failure to
-                                pay
-                                parking fees may result in penalties or restrictions on future bookings.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="right">
-                    <div class="rightimg">
-                        <img src="./img/tech-CAR-1--unscreen.gif" alt="">
-                    </div>
-                </div>
-            </div>
         </nav>
+
         <div class="mainfirstdiv">
             <div class="videologo">
                 <img src="./img/tech-CAR-unscreen.gif" width="357vw" style="border-radius: 200%;">
@@ -139,6 +88,7 @@
                 </div>
             </div>
         </div>
+
         <div class="container" id="parkingmaincustom">
             <h1 class="hpark">Smart Car Parking</h1>
             <div class="form">
@@ -146,22 +96,22 @@
                 <form id="parkingForm">
                     <label for="name">Name:</label>
                     <input type="text" id="name" placeholder="Enter Your Name" required>
-                    <div class="input-container" id="carNumberContainer">
+                    <!-- <div class="input-container" id="carNumberContainer"> -->
                         <label for="carNumber">Car Number:</label>
                         <input type="text" id="carNumber" placeholder="Enter Car Number" required>
-                    </div>
-                    <div class="input-container" id="phoneContainer">
+                    <!-- </div> -->
+                    <!-- <div class="input-container" id="phoneContainer"> -->
                         <label for="phone">Phone Number:</label>
                         <input type="tel" id="phone" placeholder="Enter Phone no." required>
-                    </div>
-                    <div class="input-container" id="emailContainer">
+                    <!-- </div> -->
+                    <!-- <div class="input-container" id="emailContainer"> -->
                         <label for="email">Email:</label>
                         <input type="email" id="email" placeholder="Enter your email id" required>
-                    </div>
-                    <button type="button" onclick="saveFormData()" class="buttonpark">Book Parking</button>
+                    <!-- </div> -->
+                    <button type="button" id="bookParkingButton" onclick="saveFormData()" class="buttonpark">Book Parking</button>
                     <input type="hidden" id="editIndex">
 
-                    <button type="button" onclick="saveEditedFormData()" class="buttonpark">Save Edited Data</button>
+                    <button type="button" id="saveEditedDataButton" onclick="saveEditedFormData()" class="buttonpark">Save Edited Data</button>
 
                 </form>
             </div>
@@ -204,8 +154,7 @@
                         <p>
                             "Explore our comprehensive parking solutions designed to streamline your parking operations.
                             <br> From real-time monitoring to automated payments, we're here to simplify <br> your
-                            parking experience."
-                        </p>
+                            parking experience."</p>
                     </div>
                     <div class="footerlinks">
                         <a href="" class="footera"><img src="./img/icons/icons8-instagram-26.png" alt=""></a>
@@ -221,5 +170,4 @@
 
         </footer>
 </body>
-
 </html>
