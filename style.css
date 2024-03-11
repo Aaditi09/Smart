@@ -51,87 +51,7 @@ li {
   color: #ffffff; /* White text color on hover */
 }
 
-/* Responsive Design */
-@media only screen and (max-width: 768px) {
-  /* Navbar */
-  nav {
-      flex-direction: column;
-      padding: 20px 0; /* Adjusted padding for better spacing */
-  }
 
-  .leftnavdiv,
-  .rightnavdiv {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 10px; /* Added margin bottom for better separation */
-  }
-
-  .leftitem,
-  .rightitem,
-  .navbtn,
-  .languageselect {
-      margin: 5px; /* Adjusted margin for better spacing */
-      font-size: 1.1em; /* Adjusted font size for better readability */
-  }
-
-  /* Main Container */
-  .maincontainer {
-      padding: 0 5%; /* Adjusted padding for better spacing */
-  }
-
-  /* Video Logo */
-  .videologo {
-      padding: 0 2% 0 4%; /* Adjusted padding for better spacing */
-  }
-
-  /* Community Container */
-  .comunitycontainer {
-      height: auto; /* Removed fixed height for responsiveness */
-      margin-top: 5vh; /* Adjusted margin top for better spacing */
-  }
-
-  /* Animated Text */
-  .animatetext {
-      font-size: 3vw; /* Adjusted font size for better readability */
-      padding: 2vh 0; /* Adjusted padding for better spacing */
-  }
-
-  /* Details Container */
-  .detail {
-      margin: 3vh 5%; /* Adjusted margin for better spacing */
-  }
-
-  /* Left Heading */
-  .leftheading {
-      margin: 3vh 0; /* Adjusted margin for better spacing */
-  }
-
-  /* Parking Details */
-  .parking-details {
-      font-size: 3vw; /* Adjusted font size for better readability */
-      margin-top: 5%; /* Adjusted margin top for better spacing */
-  }
-
-  /* Form */
-  form {
-      font-size: 3vw; /* Adjusted font size for better readability */
-      padding: 5vh 0; /* Adjusted padding for better spacing */
-  }
-
-  /* Search Container */
-  .search-container input[type=text] {
-      padding: 5px; /* Adjusted padding for better spacing */
-      margin-top: 5px; /* Adjusted margin top for better spacing */
-      margin-bottom: 5px; /* Adjusted margin bottom for better spacing */
-      font-size: 3vw; /* Adjusted font size for better readability */
-  }
-
-  /* Buttons */
-  .buttonpark {
-      padding: 10px 20px; /* Adjusted padding for better button size */
-      margin-top: 5%; /* Adjusted margin top for better spacing */
-  }
-}
 
 
 .mainfirstdiv {
@@ -147,7 +67,9 @@ li {
 
 .textmove {
     position: relative;
-    color: #B6BBC4; /* Light text color */
+    color: rgba(0, 0, 0, 0); /* Light text color */
+
+    /* color: #B6BBC4;  */
 }
 
 .textmove::before {
@@ -198,6 +120,27 @@ li {
  
   align-items: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .animatetext{
     animation: movetext 10s linear reverse infinite forwards;
@@ -316,10 +259,11 @@ li {
   .mpark{
  
     width: 90%;
-padding: 1%;
-border: 1px solid #ccc;
-border-radius: 4px;
-background-color: #B6EADA59;
+    padding: 1%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #B6EADA59;
+    margin: auto;
 
   }
   .totalpara{
@@ -376,243 +320,384 @@ label {
     background-color: #0056b3; /* Darker shade on hover */
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 input {
-    width: 100%; /* Set width to 100% */
-    height: 50px; /* Set a fixed height */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 1.2vw;
-    background-color: #B6EADA59;
-  }
+  width: 100%; /* Set width to 100% */
+  height: 50px; /* Set a fixed height */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1.2vw;
+  background-color: #B6EADA59;
+}
+
+.buttonpark {
+    padding: 15px 30px; /* Adjust padding for better button size */
+    margin-top: 20px; /* Increase margin-top for better spacing */
+}
+
+.buttonpark:hover {
+    background-color: #B6EADA; /* Lighter shade on hover */
+    color: #03001C; /* Dark text color on hover */
+}
+
   
-  .buttonpark {
-      padding: 15px 30px; /* Adjust padding for better button size */
-      margin-top: 20px; /* Increase margin-top for better spacing */
-  }
-  
-  .buttonpark:hover {
-      background-color: #B6EADA; /* Lighter shade on hover */
-      color: #03001C; /* Dark text color on hover */
-  }
-  
-    
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    
-    th, td {
-      padding: 8px;
-      border-bottom: 1px solid #ddd;
-    }
-    .remove-btn{
-  
-      background-color: #007bff;
-      color: black;
-      border: none;
-      border-radius: 4px;
-      padding: 2vh 1vw;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .remove-btn:hover{
-      background-color: #B6EADA;
-      color: #03001C;
-  
-    }
-    .notification {
-      position: fixed;
-      top: -100px; /* Initially position above the screen */
-      right: 20px; /* Adjust as needed */
-      width: 300px; /* Adjust as needed */
-      background-color: #0a3d62; /* Dark blue background */
-      color: #fff; /* White text */
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Box shadow for glowing effect */
-      display: none; /* Initially hide the notification */
-      z-index: 9999; /* Ensure it appears on top of other elements */
-      animation: slideIn 0.5s forwards; /* Slide in animation */
-    }
-    
-    @keyframes slideIn {
-      from {
-        top: -100px;
-      }
-      to {
-        top: 20px; /* Final position */
-      }
-    }
-    
-    .notification:hover {
-      animation: glow 1s infinite alternate; /* Glow effect on hover */
-    }
-    
-    @keyframes glow {
-      from {
-        box-shadow: 0 0 20px rgba(0, 0, 255, 0.5); /* Initial shadow color */
-      }
-      to {
-        box-shadow: 0 0 30px rgba(0, 0, 255, 0.8); /* Glow effect */
-      }
-    }
-    
-    .bill-container {
-      display: none;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-    
-    .bill-box {
-      background:linear-gradient(to right,#03001C,#240046);
-      padding: 20px;
-      border-radius: 8px;
-      color: #ccc;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-    
-    .bill-box h2 {
-      margin-bottom: 10px;
-      font-size: 3vw;
-    }
-    
-    .bill-details {
-      margin-bottom: 20px;
-      font-size: 2vw;
-    }
-    
-    .bill-details p {
-      margin-bottom: 5px;
-      
-  
-    }
-    
-    .close-btn {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .input-container {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease;
-  }
-  
-  .input-container.active {
-      max-height: 120px; /* Adjust this value as needed */
-  }
-  
-    .close-btn:hover {
-      background-color: #0056b3;
-    }
-  
-    .mainfooter{
-      background-color: #03001C;
-      color: #ccc;
-      height: 40vh;
-      display: flex;
-      justify-content: center;
-      align-content: center;
-    }
-    .mainfooterbox{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 0 15vw;
-    }
-    .footerheading{
-      font-size: 1.6vw;
-      padding: 1vh 0;
-    }
-    .footerpara{
-      text-align: center;
-      padding: 1vh 0;
-    }
-    .footerlinks{
-      padding: 1vh 0;
-    }
-    .footera{
-      margin:0 1vw;
-    }
-  
-  header{
-    overflow: hidden;
-  }
-  /* Animations */
-  .hpark {
-    animation: slideInFromLeft 1s ease;
-  }
-  
-  @keyframes slideInFromLeft {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-  }
-  
-  .footerlinks a {
-    display: inline-block;
-    margin-right: 10px;
-    color: #333;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-  }
-  
-  .footerlinks a:hover {
-    transform: scale(1.2);
-  }
-  .detail {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  @media only screen and (min-width: 768px) {
-    .detail {
-        flex-direction: row;
-    }
-  }
-  
-  .left,
-  .right {
-    flex: 1;
-  }
-  
-  .left {
-    padding: 20px;
-  }
-  
-  .right {
-    padding: 20px;
-  }
-  
-  .leftheading h1 {
-    margin-top: 0;
-  }
-  
-  .leftpara {
+  table {
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 20px;
   }
   
-  .rightimg img {
-    max-width: 100%;
-    height: auto;
+  th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
   }
+  .remove-btn{
+
+    background-color: #007bff;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    padding: 2vh 1vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .remove-btn:hover{
+    background-color: #B6EADA;
+    color: #03001C;
+
+  }
+  .notification {
+    position: fixed;
+    top: -100px; /* Initially position above the screen */
+    right: 20px; /* Adjust as needed */
+    width: 300px; /* Adjust as needed */
+    background-color: #0a3d62; /* Dark blue background */
+    color: #fff; /* White text */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Box shadow for glowing effect */
+    display: none; /* Initially hide the notification */
+    z-index: 9999; /* Ensure it appears on top of other elements */
+    animation: slideIn 0.5s forwards; /* Slide in animation */
+  }
+  
+  @keyframes slideIn {
+    from {
+      top: -100px;
+    }
+    to {
+      top: 20px; /* Final position */
+    }
+  }
+  
+  .notification:hover {
+    animation: glow 1s infinite alternate; /* Glow effect on hover */
+  }
+  
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px rgba(0, 0, 255, 0.5); /* Initial shadow color */
+    }
+    to {
+      box-shadow: 0 0 30px rgba(0, 0, 255, 0.8); /* Glow effect */
+    }
+  }
+  
+  .bill-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .bill-box {
+    background:linear-gradient(to right,#03001C,#240046);
+    padding: 20px;
+    border-radius: 8px;
+    color: #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .bill-box h2 {
+    margin-bottom: 10px;
+    font-size: 3vw;
+  }
+  
+  .bill-details {
+    margin-bottom: 20px;
+    font-size: 2vw;
+  }
+  
+  .bill-details p {
+    margin-bottom: 5px;
+    
+
+  }
+  
+
+
+
+  .close-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .input-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+
+
+.input-container.active {
+    max-height: 120px; /* Adjust this value as needed */
+}
+
+  .close-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .mainfooter{
+    background-color: #03001C;
+    color: #ccc;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  .mainfooterbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 15vw;
+  }
+  .footerheading{
+    font-size: 1.6vw;
+    padding: 1vh 0;
+  }
+  .footerpara{
+    text-align: center;
+    padding: 1vh 0;
+  }
+  .footerlinks{
+    padding: 1vh 0;
+  }
+  .footera{
+    margin:0 1vw;
+  }
+
+header{
+  overflow: hidden;
+}
+/* Animations */
+.hpark {
+  animation: slideInFromLeft 1s ease;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  100% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+.footerlinks a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #333;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.footerlinks a:hover {
+  transform: scale(1.2);
+}
+.detail {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .detail {
+      flex-direction: row;
+  }
+}
+
+.left,
+.right {
+  flex: 1;
+}
+
+.left {
+  padding: 20px;
+}
+
+.right {
+  padding: 20px;
+}
+
+.leftheading h1 {
+  margin-top: 0;
+}
+
+.leftpara {
+  margin-top: 20px;
+}
+
+.rightimg img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+
+   /* Hide certain columns on smaller screens */
+   #parkingTable th:nth-child(2),
+   #parkingTable td:nth-child(2),
+   #parkingTable th:nth-child(3),
+   #parkingTable td:nth-child(3) {
+       display: none;
+   }
+
+  /* Navbar */
+  nav {
+      flex-direction: column;
+      padding: 20px 0; /* Adjusted padding for better spacing */
+  }
+
+  .leftnavdiv,
+  .rightnavdiv {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px; /* Added margin bottom for better separation */
+  }
+
+  .leftitem,
+  .rightitem,
+  .navbtn,
+  .languageselect {
+      margin: 5px; /* Adjusted margin for better spacing */
+      font-size: 1.1em; /* Adjusted font size for better readability */
+  }
+
+  /* Main Container */
+  .maincontainer {
+      padding: 0 5%; /* Adjusted padding for better spacing */
+  }
+
+  /* Video Logo */
+  .videologo {
+      padding: 0 2% 0 4%; /* Adjusted padding for better spacing */
+  }
+
+  /* Community Container */
+  .comunitycontainer {
+      height: auto; /* Removed fixed height for responsiveness */
+      margin-top: 5vh; /* Adjusted margin top for better spacing */
+  }
+
+  /* Animated Text */
+  .animatetext {
+      font-size: 3vw; /* Adjusted font size for better readability */
+      padding: 2vh 0; /* Adjusted padding for better spacing */
+  }
+
+  /* Details Container */
+  .detail {
+      margin: 3vh 5%; /* Adjusted margin for better spacing */
+  }
+
+  /* Left Heading */
+  .leftheading {
+      margin: 3vh 0; /* Adjusted margin for better spacing */
+  }
+
+  /* Parking Details */
+  .parking-details {
+      font-size: 3vw; /* Adjusted font size for better readability */
+      margin-top: 5%; /* Adjusted margin top for better spacing */
+  }
+
+  /* Form */
+  form {
+      font-size: 3vw; /* Adjusted font size for better readability */
+      padding: 5vh 0; /* Adjusted padding for better spacing */
+  }
+
+  input{
+    font-size: 3vw;
+  }
+
+  /* Search Container */
+  .search-container input[type=text] {
+      padding: 5px; /* Adjusted padding for better spacing */
+      margin-top: 5px; /* Adjusted margin top for better spacing */
+      margin-bottom: 5px; /* Adjusted margin bottom for better spacing */
+      font-size: 3vw; /* Adjusted font size for better readability */
+  }
+
+  /* Buttons */
+  .buttonpark {
+      font-size: 2.5vw;
+      width: 50%;
+      padding: 10px 20px; /* Adjusted padding for better button size */
+      margin-top: 5%; /* Adjusted margin top for better spacing */
+  }
+
+  h1.hpark{
+    font-size: 7vw;
+  }
+
+  p.form{
+    font-size: 3vw;
+  }
+
+  h2.footerheading{
+    font-size: 4vw;
+  }
+
+}

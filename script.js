@@ -1,136 +1,137 @@
 function showNotification(message, type = 'primary') {
-  var notification = document.getElementById('notification');
-  var notificationMessage = document.getElementById('notification-message');
-  if (notification && notificationMessage) {
-      notificationMessage.innerText = message;
-      notification.classList.remove('alert-primary', 'alert-success', 'alert-danger', 'alert-warning');
-      notification.classList.add('alert-' + type);
-      notification.style.display = 'block';
-      setTimeout(function () {
-          notification.classList.add('show');
-      }, 100);
-      setTimeout(function () {
-          notification.style.display = 'none';
-      }, 5000);
-  }
+    var notification = document.getElementById('notification');
+    var notificationMessage = document.getElementById('notification-message');
+    if (notification && notificationMessage) {
+        notificationMessage.innerText = message;
+        notification.classList.remove('alert-primary', 'alert-success', 'alert-danger', 'alert-warning');
+        notification.classList.add('alert-' + type);
+        notification.style.display = 'block';
+        setTimeout(function () {
+            notification.classList.add('show');
+        }, 100);
+        setTimeout(function () {
+            notification.style.display = 'none';
+        }, 5000);
+    }
 }
-
 
 function searchTable() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("searchInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("parkingTable");
-  tr = table.getElementsByTagName("tr");
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("parkingTable");
+    tr = table.getElementsByTagName("tr");
 
-  for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td");
-      for (var j = 0; j < td.length; j++) {
-          if (td[j]) {
-              txtValue = td[j].textContent || td[j].innerText;
-              if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                  tr[i].style.display = "";
-                  break;
-              } else {
-                  tr[i].style.display = "none";
-              }
-          }
-      }
-  }
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+        for (var j = 0; j < td.length; j++) {
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    break;
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
 }
-
+var checkDurationInterval;
 window.onload = function () {
-  loadFormData();
+    loadFormData();
 
-  setInterval(checkDurationAndNotify, 20000);
+    checkDurationInterval = setInterval(checkDurationAndNotify, 20000);
 };
 function checkDurationAndNotify() {
-  var existingData = JSON.parse(localStorage.getItem('formData')) || [];
-  var currentTime = new Date();
+    var existingData = JSON.parse(localStorage.getItem('formData')) || [];
+    var currentTime = new Date();
 
-  existingData.forEach(function (formData) {
-      var startTime = new Date(formData.startTime);
-      var durationHours = Math.ceil((currentTime - startTime) / (1000 * 60 * 60));
+    existingData.forEach(function (formData) {
+        var startTime = new Date(formData.startTime);
+        var durationHours = Math.ceil((currentTime - startTime) / (1000 * 60 * 60));
 
-      if (durationHours > 1) {
-          // Vehicle has been parked for more than 5 hours, send notification
-          showNotification(Vehicle Plate :- ${formData.carNumber} has been parked for about ${durationHours} hours.);
-      }
-  });
+        if (durationHours > 0.0167) {
+            // Vehicle has been parked for more than 5 hours, send notification
+            showNotification(`Vehicle Plate :- ${formData.carNumber} has been parked for about ${durationHours} hours.`);
+        }
+    });
+    // Clear the interval after showing notifications
+    clearInterval(checkDurationInterval);
 }
 
 function saveFormData() {
-  const name = document.getElementById('name').value;
-  const carNumber = document.getElementById('carNumber').value;
-  const phone = document.getElementById('phone').value;
-  const email = document.getElementById('email').value;
+    const name = document.getElementById('name').value;
+    const carNumber = document.getElementById('carNumber').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
 
-  if (!name || !carNumber || !phone || !email) {
-      showNotification('Please fill in all fields.', 'warning');
-      return false; // Prevent form submission
-  }
+    if (!name || !carNumber || !phone || !email) {
+        showNotification('Please fill in all fields.', 'warning');
+        return false; // Prevent form submission
+    }
 
-  
-  var formData = {
-    name: document.getElementById('name').value,
-    carNumber: document.getElementById('carNumber').value,
-    phone: document.getElementById('phone').value,
-    email: document.getElementById('email').value,
-    startTime: new Date(),
-    bookingTime: new Date().toLocaleString(),
-    duration: '1 hour',
-    cost: '$10'
-};
+    var formData = {
+        name: document.getElementById('name').value,
+        carNumber: document.getElementById('carNumber').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        startTime: new Date(),
+        bookingTime: new Date().toLocaleString(),
+        duration: '1 hour',
+        cost: '$10'
+    };
 
-var existingData = JSON.parse(localStorage.getItem('formData')) || [];
+    var existingData = JSON.parse(localStorage.getItem('formData')) || [];
 
-existingData.push(formData);
+    existingData.push(formData);
 
-localStorage.setItem('formData', JSON.stringify(existingData));
+    localStorage.setItem('formData', JSON.stringify(existingData));
 
-populateTable(existingData);
+    populateTable(existingData);
 
-document.getElementById("name").value = "";
-document.getElementById("carNumber").value = "";
-document.getElementById("phone").value = "";
-document.getElementById("email").value = "";
+    document.getElementById("name").value = "";
+    document.getElementById("carNumber").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("email").value = "";
 
-showNotification(`Name: ${name} ,Car Number: ${carNumber}, Total Cost: $10.00`, 'warning')
+    showNotification(`Name: ${name} ,Car Number: ${carNumber}, Total Cost: $10.00`, 'warning')
 
-setInterval(location.reload, 5000);
+    setInterval(location.reload, 5000);
+    location.reload();
 }
 
 function populateTable(data) {
-var tableBody = document.getElementById('parkingBody');
-tableBody.innerHTML = '';
+    var tableBody = document.getElementById('parkingBody');
+    tableBody.innerHTML = '';
 
-data.forEach(function (formData, index) {
-    var row = tableBody.insertRow();
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
-    var cell6 = row.insertCell(5);
-    var cell7 = row.insertCell(6);
-    var cell8 = row.insertCell(7);
+    data.forEach(function (formData, index) {
+        var row = tableBody.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
+        var cell8 = row.insertCell(7);
 
-    cell1.innerHTML = formData.name;
-    cell2.innerHTML = formData.carNumber;
-    cell3.innerHTML = formData.phone;
-    cell4.innerHTML = formData.email;
-    cell5.innerHTML = formData.bookingTime;
+        cell1.innerHTML = formData.name;
+        cell2.innerHTML = formData.carNumber;
+        cell3.innerHTML = formData.phone;
+        cell4.innerHTML = formData.email;
+        cell5.innerHTML = formData.bookingTime;
 
-    var durationHours = Math.ceil((new Date() - new Date(formData.startTime)) / (1000 * 60 * 60));
-    cell6.innerHTML = durationHours + ' hour(s)';
+        var durationHours = Math.ceil((new Date() - new Date(formData.startTime)) / (1000 * 60 * 60));
+        cell6.innerHTML = durationHours + ' hour(s)';
 
-    var costPerHour = 10;
-    var totalCost = durationHours * costPerHour;
-    cell7.innerHTML = '$' + totalCost;
+        var costPerHour = 10;
+        var totalCost = durationHours * costPerHour;
+        cell7.innerHTML = '$' + totalCost;
 
-    cell8.innerHTML = `<button onclick="editFormData(${index})" class="editButton">Edit</button>
-                   <button onclick="removeFormData(${index})" class="removeButton">Remove</button>`;
-});
+        cell8.innerHTML = `<button onclick="editFormData(${index})" class="editButton">Edit</button>
+                       <button onclick="removeFormData(${index})" class="removeButton">Remove</button>`;
+    });
 
 }
 
@@ -144,7 +145,7 @@ function removeFormData(index) {
     }
     location.reload();
 }
-
+document.getElementById('saveEditedDataButton').style.display = 'none';
 function editFormData(index) {
     var existingData = JSON.parse(localStorage.getItem('formData')) || [];
     var formData = existingData[index];
@@ -155,6 +156,11 @@ function editFormData(index) {
     document.getElementById('email').value = formData.email;
 
     document.getElementById('editIndex').value = index;
+    // Hide the "Book Parking" button
+    document.getElementById('bookParkingButton').style.display = 'none';
+
+    // Show the "Save Edited Data" button
+    document.getElementById('saveEditedDataButton').style.display = 'block';
 }
 
 function saveEditedFormData() {
@@ -186,9 +192,22 @@ function saveEditedFormData() {
 
         populateTable(existingData);
         showNotification("Data Editted", "primary");
+
+        // Clear form fields after saving edited data
+        document.getElementById('name').value = '';
+        document.getElementById('carNumber').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('editIndex').value = '';
     }
 
     document.getElementById('editIndex').value = '';
+
+    // Hide the "Save Edited Data" button
+    document.getElementById('saveEditedDataButton').style.display = 'none';
+
+    // Show the "Book Parking" button
+    document.getElementById('bookParkingButton').style.display = 'block';
 }
 
 function downloadFormData() {
@@ -215,6 +234,63 @@ function loadFormData() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+
+    const nameInput = document.getElementById('name');
+    const carNumberInput = document.getElementById('carNumber');
+    const phoneInput = document.getElementById('phone');
+    const emailInput = document.getElementById('email');
+
+    const nameLabel = document.querySelector('label[for="name"]');
+    const carNumberLabel = document.querySelector('label[for="carNumber"]');
+    const phoneLabel = document.querySelector('label[for="phone"]');
+    const emailLabel = document.querySelector('label[for="email"]');
+
+    // Initially hide car number, phone, and email inputs and their labels
+    carNumberInput.style.display = 'none';
+    carNumberLabel.style.display = 'none';
+    phoneInput.style.display = 'none';
+    phoneLabel.style.display = 'none';
+    emailInput.style.display = 'none';
+    emailLabel.style.display = 'none';
+
+
+    // Listen for Tab key press events on the name field
+    nameInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Tab') {
+            event.preventDefault(); // Prevent default Tab behavior
+            // Move focus to car number input
+            carNumberInput.style.display = 'block';
+            carNumberLabel.style.display = 'block';
+            carNumberInput.focus();
+        }
+    });
+
+    // Listen for Tab key press events on the car number field
+    carNumberInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Tab') {
+            event.preventDefault(); // Prevent default Tab behavior
+            // Move focus to phone input
+            phoneInput.style.display = 'block';
+            phoneLabel.style.display = 'block';
+            phoneInput.focus();
+        }
+    });
+
+    // Listen for Tab key press events on the phone field
+    phoneInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Tab') {
+            event.preventDefault(); // Prevent default Tab behavior
+            // Move focus to email input
+            emailInput.style.display = 'block';
+            emailLabel.style.display = 'block';
+            emailInput.focus();
+        }
+    });
+
+
+
+
+
     const parkingForm = document.getElementById('parkingForm');
     const parkingBody = document.getElementById('parkingBody');
     const spacesLeft = document.getElementById('spacesLeft');
@@ -229,116 +305,120 @@ document.addEventListener('DOMContentLoaded', function () {
 
     updateAvailableSpaces();
 
-        parkingForm.addEventListener('submit', function (event) {
-            event.preventDefault();
+    parkingForm.addEventListener('submit', function (event) {
+        event.preventDefault();
 
-            const name = document.getElementById('name').value;
-            const carNumber = document.getElementById('carNumber').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const bookingTime = new Date().toLocaleString();
+        const name = document.getElementById('name').value;
+        const carNumber = document.getElementById('carNumber').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+        const bookingTime = new Date().toLocaleString();
 
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-            <td>${name}</td>
-            <td>${carNumber}</td>
-            <td>${phone}</td>
-            <td>${email}</td>
-            <td>${bookingTime}</td>
-            <td class="duration"></td>
-            <td class="cost"></td>
-        `;
-            parkingBody.appendChild(newRow);
-            availableSpaces--;
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${carNumber}</td>
+        <td>${phone}</td>
+        <td>${email}</td>
+        <td>${bookingTime}</td>
+        <td class="duration"></td>
+        <td class="cost"></td>
+    `;
+        parkingBody.appendChild(newRow);
+        availableSpaces--;
+        spacesLeft.textContent = availableSpaces;
+
+        parkingForm.reset();
+
+        if (availableSpaces === 0) {
+            parkingForm.classList.add('disabled');
+            parkingForm.querySelectorAll('input, button').forEach(input => {
+                input.disabled = true;
+            });
+        }
+
+
+
+        loadFormData();
+
+    });
+    const startTime = new Date();
+    const intervalId = setInterval(() => {
+        const endTime = new Date();
+        const duration = Math.floor((endTime - startTime) / 1000); // Calculate duration in seconds
+        newRow.querySelector('.duration').textContent = duration + ' sec'; // Display duration in seconds
+        const cost = (duration * 0.01).toFixed(1); // Calculate cost based on seconds
+        newRow.querySelector('.cost').textContent = '$' + cost;
+    });
+
+
+
+    function removeFormData(index) {
+        const confirmRemove = confirm('Please pay your parking fee: $' + document.getElementById('parkingTable').rows[index + 1].querySelectorAll('td')[6].textContent + '\n\nClick OK to confirm payment and remove your parking entry.');
+        if (confirmRemove) {
+            const existingData = JSON.parse(localStorage.getItem('formData')) || [];
+            existingData.splice(index, 1);
+            localStorage.setItem('formData', JSON.stringify(existingData));
+            populateTable(existingData);
+            availableSpaces++;
             spacesLeft.textContent = availableSpaces;
-
-            parkingForm.reset();
-
-            if (availableSpaces === 0) {
-                parkingForm.classList.add('disabled');
-                parkingForm.querySelectorAll('input, button').forEach(input => {
-                    input.disabled = true;
-                });
-            }
-
-            loadFormData();
-
-        });
-        const startTime = new Date();
-        const intervalId = setInterval(() => {
-            const endTime = new Date();
-            const duration = Math.floor((endTime - startTime) / 1000); // Calculate duration in seconds
-            newRow.querySelector('.duration').textContent = duration + ' sec'; // Display duration in seconds
-            const cost = (duration * 0.01).toFixed(1); // Calculate cost based on seconds
-            newRow.querySelector('.cost').textContent = '$' + cost;
-        });
-
-        function removeFormData(index) {
-            const confirmRemove = confirm('Please pay your parking fee: $' + document.getElementById('parkingTable').rows[index + 1].querySelectorAll('td')[6].textContent + '\n\nClick OK to confirm payment and remove your parking entry.');
-            if (confirmRemove) {
-                const existingData = JSON.parse(localStorage.getItem('formData')) || [];
-                existingData.splice(index, 1);
-                localStorage.setItem('formData', JSON.stringify(existingData));
-                populateTable(existingData);
-                availableSpaces++;
-                spacesLeft.textContent = availableSpaces;
-            }
         }
+    }
 
-    });
-    // Function to check if the given time and current time exceed 10 hours
+});
+// Function to check if the given time and current time exceed 10 hours
 
 
-    document.getElementById('name').addEventListener('input', function (event) {
-        if (this.value.trim() !== '') {
+document.getElementById('name').addEventListener('input', function (event) {
+    if (this.value.trim() !== '') {
+        document.getElementById('carNumberContainer').classList.add('active');
+    } else {
+        document.getElementById('carNumberContainer').classList.remove('active');
+    }
+});
+
+document.getElementById('name').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        if (this.value.trim() === '') {
             document.getElementById('carNumberContainer').classList.add('active');
-        } else {
-            document.getElementById('carNumberContainer').classList.remove('active');
+            document.getElementById('carNumber').focus();
         }
-    });
+    }
+});
 
-    document.getElementById('name').addEventListener('keydown', function (event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            if (this.value.trim() === '') {
-                document.getElementById('carNumberContainer').classList.add('active');
-                document.getElementById('carNumber').focus();
-            }
-        }
-    });
+document.getElementById('carNumber').addEventListener('input', function (event) {
+    if (this.value.trim() !== '') {
+        document.getElementById('phoneContainer').classList.add('active');
+    } else {
+        document.getElementById('phoneContainer').classList.remove('active');
+    }
+});
 
-    document.getElementById('carNumber').addEventListener('input', function (event) {
-        if (this.value.trim() !== '') {
+document.getElementById('carNumber').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        if (this.value.trim() === '') {
             document.getElementById('phoneContainer').classList.add('active');
-        } else {
-            document.getElementById('phoneContainer').classList.remove('active');
+            document.getElementById('phone').focus();
         }
-    });
+    }
+});
 
-    document.getElementById('carNumber').addEventListener('keydown', function (event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            if (this.value.trim() === '') {
-                document.getElementById('phoneContainer').classList.add('active');
-                document.getElementById('phone').focus();
-            }
-        }
-    });
+document.getElementById('phone').addEventListener('input', function (event) {
+    if (this.value.trim() !== '') {
+        document.getElementById('emailContainer').classList.add('active');
+    } else {
+        document.getElementById('emailContainer').classList.remove('active');
+    }
+});
 
-    document.getElementById('phone').addEventListener('input', function (event) {
-        if (this.value.trim() !== '') {
+document.getElementById('phone').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        if (this.value.trim() === '') {
             document.getElementById('emailContainer').classList.add('active');
-        } else {
-            document.getElementById('emailContainer').classList.remove('active');
+            document.getElementById('email').focus();
         }
-    });
-
-    document.getElementById('phone').addEventListener('keydown', function (event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            if (this.value.trim() === '') {
-                document.getElementById('emailContainer').classList.add('active');
-                document.getElementById('email').focus();
-            }
-        }
-    });
+    }
+});
